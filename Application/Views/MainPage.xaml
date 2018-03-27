@@ -1,0 +1,63 @@
+<Page x:Class="AnagramCheckerApp.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:AnagramCheckerApp.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:vm="using:AnagramCheckerApp.ViewModels"
+      mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <controls:PageHeader x:Name="pageHeader"
+                             Content="Anagram Checker"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignTopWithPanel="True" />
+
+        <RelativePanel 
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       RelativePanel.AlignRightWithPanel="True"
+                       RelativePanel.Below="pageHeader">
+
+            <!--  content  -->
+            <TextBox Name="firstInputText"
+                     Margin="10"
+                     Text="{x:Bind ViewModel.FirstString, Mode=TwoWay}"
+                     PlaceholderText="Type word"
+                     MinWidth="200"
+                     RelativePanel.AlignTopWithPanel="True"
+                     RelativePanel.AlignLeftWithPanel="True"/>
+            <TextBox Name="secondInputText"
+                     Margin="10"
+                     MinWidth="200"
+                     Text="{x:Bind ViewModel.SecondString, Mode=TwoWay}"
+                     PlaceholderText="Type word"
+                     RelativePanel.RightOf="firstInputText"
+                     RelativePanel.AlignVerticalCenterWith="firstInputText"/>
+            <Button Name="checkAnagramButton"
+                    Margin="10"
+                    Content="Is Anagram?"
+                    Click="{x:Bind ViewModel.CheckAnagramHandler}"
+                    RelativePanel.RightOf="secondInputText"
+                     RelativePanel.AlignVerticalCenterWith="secondInputText"/>
+            <TextBlock Name="outputText"
+                     Margin="10"
+                     Text="{x:Bind ViewModel.Output, Mode=OneWay}"
+                     RelativePanel.RightOf="checkAnagramButton"
+                     RelativePanel.AlignVerticalCenterWith="checkAnagramButton"/>
+
+        </RelativePanel>
+
+    </RelativePanel>
+
+</Page>
+
