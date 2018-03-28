@@ -11,6 +11,7 @@ namespace AnagramCheckerApp.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
+        //code checked in
         string _first;
         public string FirstString
         {
